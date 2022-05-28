@@ -1,0 +1,125 @@
+*{
+			margin: 0px;
+			padding: 0px;
+			box-sizing: border-box;
+}
+		.container_1{
+			display: flex;
+			flex-flow: row wrap;
+			justify-content: space-between; 
+			align-items: center;
+			
+			padding: 5px;
+			color: white;
+			background-color: #212121;
+			height: 10vh;
+			width: 100vw;
+			font-family: 'Baloo Tammudu 2', cursive;
+			box-shadow: 1px 3px 30px blue;
+		}
+		._title{
+			flex-basis: 400px;
+			font-size: 200%;
+			flex-grow: 1;
+			padding: 7px;
+		}
+		.win{
+			align-self: flex-end;
+			flex-grow: 0;
+			/*padding-left: 5px;*/
+			text-align: right;
+			flex-basis: 300px;
+			font-family: 'Baloo Tammudu 2', cursive;
+			font-size: 100%;
+
+		}
+
+		.container_2{
+			display: flex;
+			flex-flow: row nowrap;
+			height: 85vh;
+			width: 100vw;
+		}
+		.container_3{
+			height: 5vh;
+			width: 100vw;
+			background-image: url('bg2.jpg');
+		}
+		.side_bar{
+			flex-basis: 80px;
+			flex-grow: 1;
+			border: 2px dotted whitesmoke;
+			padding: 5px 0px;
+			width: 20vw;
+			overflow-y: auto;
+			background-image: url('bg2.jpg');
+
+			/*display: flex;
+			flex-direction: column;
+			justify-content: flex-start;*/
+
+		}
+		.main_body{
+			width: 60vw;
+			flex-basis: 350px;
+			flex-grow: 4;
+			padding: 5px 10px;
+			font-family: 'Baloo Tammudu 2', cursive;
+			background-color: FloralWhite;
+
+			display: flex;
+			flex-flow: column wrap;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.user{
+			width: 60vw;
+			height:  30vh;
+			padding: 40px;
+			margin: 10px;
+
+			boder: 5px solid black;
+			border-radius: 30px;
+			box-shadow: 1px 3px 30px Indigo;
+			background-color: HoneyDew;
+
+			text-align: center;
+			font-family: 'Baloo Tammudu 2', cursive;
+			font-size: 500%;
+			font-weight: bold;
+		}
+
+		.shopper{
+			width: 60vw;
+			height:  30vh;
+			padding: 40px;
+			margin: 10px;
+
+			boder: 5px solid black;
+			border-radius: 30px;
+			box-shadow: 1px 3px 30px Indigo;
+			background-color: HoneyDew;
+
+			text-align: center;
+			font-family: 'Baloo Tammudu 2', cursive;
+			font-size: 500%;
+			font-weight: bold;
+		}
+
+		.calculator:hover{
+			cursor: pointer;
+			background-color: LemonChiffon;
+			font-size: 650%;
+			border-left:  10px solid Cyan;
+			text-decoration: underline;
+		}
+
+		.portfolio:hover{
+			cursor: pointer;
+			background-color: LemonChiffon;
+			font-size: 650%;
+			border-left:  10px solid Cyan;
+			text-decoration: underline;
+
+		}
