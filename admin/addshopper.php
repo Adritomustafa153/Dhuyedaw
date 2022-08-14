@@ -1,4 +1,11 @@
 <?php
+?>
+<?php
+
+?>
+<?php
+?>
+<?php
 date_default_timezone_set('Asia/dhaka');
 $date = date('d-m-y');
 $time = date(' h:i:s');
@@ -22,6 +29,23 @@ $time = date(' h:i:s');
       margin-left: 220px;
       
     }
+    .btns{
+        font-size: 16px;
+        padding: 10px 20px;
+        border-radius: 12px;
+        transition-duration: 0.4s;
+        background-color: #005EB8;
+        color: white;
+        margin-left:20px;
+        border: 2px solid #005EB8; 
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    }
+    .btns:hover {
+  background-color: #87CEEB;
+  border: 2px solid #005EB8; 
+  
+  
+}
   
     
     </style>
@@ -45,6 +69,17 @@ $time = date(' h:i:s');
 />
 
 <!-- MDB -->
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 <script
   type="text/javascript"
   src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.4.0/mdb.min.js"
@@ -104,10 +139,10 @@ $time = date(' h:i:s');
       <!-- Left links -->
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link" href="addshopper.php">Add Shopper</a>
+          <a class="nav-link" href="#">Add Shopper</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="">Add Product</a>
+          <a class="nav-link" href="#">Add Product</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Tracking</a>
@@ -180,7 +215,7 @@ $time = date(' h:i:s');
           </li>
           
           <li>
-            <a class="dropdown-item" href="logout.php">Logout</a>
+            <a class="dropdown-item" href="#">Logout</a>
           </li>
         </ul>
       </div>
@@ -193,11 +228,17 @@ $time = date(' h:i:s');
 <div class="weladm">
 <h2>Welcome <span class="badge bg-primary"><?php echo"Admin"?></span></h2>
 <p> Today's Date : <?php echo "$date"?> Time : <?php echo "$time"?></p>
+<div>
+<h5>To register a new Shop please click ta "New Shop" button to load the shop entry form</h3>
+<form action="insert_shop.php" method="post">
+<button class="btns" id="getshopper">New Shop</button>
+</form>
 
-
+</div>
 </div>
 
 
  </body>
  <script src="sidenav.js"></script>
+ <!-- <script src="request.js"></script> -->
  </html>

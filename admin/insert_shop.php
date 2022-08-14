@@ -1,4 +1,30 @@
 <?php
+require_once('db_connect.php');
+if(isset($_POST['u_Add'])){
+
+  // $id = $_POST['id'];
+  $name = $_POST['Name'];
+  $pass = $_POST['pass'];
+  $location = $_POST['location'];
+  $servicearea = $_POST['s_area'];
+  $email = $_POST['s_email'];
+  $contact = $_POST['s_contact'];
+
+  $sql1 = "INSERT INTO shop (s_id, s_name, pass, s_loaction,s_contact,s_email,s_area) VALUES (NULL, '$name', '$pass', '$location','$contact','$email','$servicearea');";
+      $result = $conn->query($sql1);
+
+      if ($result === TRUE) {
+         echo '<script>alert("Successfull Added new user")</script>';
+      }
+      else{
+      echo "Error: " . $sql1 . "<br>" . $conn->error;
+      }
+
+$conn->close();
+    }
+?>
+
+<?php
 date_default_timezone_set('Asia/dhaka');
 $date = date('d-m-y');
 $time = date(' h:i:s');
@@ -22,10 +48,56 @@ $time = date(' h:i:s');
       margin-left: 220px;
       
     }
+    .btns{
+        font-size: 16px;
+        padding: 10px 20px;
+        border-radius: 12px;
+        transition-duration: 0.4s;
+        background-color: #005EB8;
+        color: white;
+        margin-left:20px;
+        border: 2px solid #005EB8; 
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    }
+    .btns:hover {
+  background-color: #87CEEB;
+  border: 2px solid #005EB8; 
   
+  
+}
+.update{
+    margin-left:45%;
+  }
+    .update .upd{
+        
+        background-color:#1CDBBC; /* Green */
+  border: 1px solid #1CDBBC;
+  border-radius: 12px;
+  color: white;
+  margin-top: 10px;
+  
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+    }
+    .emailS, .passwordS{
+	margin: 10px 0px;
+	display: block;
+}
+.login-section form input{
+	height: 40px;
+	border-radius: 8px;
+	width: 300px;
+	outline: none;
+	border: none;
+	padding: 0px 10px;
+}
     
     </style>
     <link rel="stylesheet" href="sidenav.css">
+    <!-- <link rel="stylesheet" type="text/css" href="up.css"> -->
  </head>
  <body>
 <!-- Font Awesome -->
@@ -45,6 +117,17 @@ $time = date(' h:i:s');
 />
 
 <!-- MDB -->
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 <script
   type="text/javascript"
   src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.4.0/mdb.min.js"
@@ -104,10 +187,10 @@ $time = date(' h:i:s');
       <!-- Left links -->
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link" href="addshopper.php">Add Shopper</a>
+          <a class="nav-link" href="#">Add Shopper</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="">Add Product</a>
+          <a class="nav-link" href="#">Add Product</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Tracking</a>
@@ -119,41 +202,8 @@ $time = date(' h:i:s');
   
 
    
-    <div class="d-flex align-items-center">
-    
-      <a class="text-reset me-3" href="#">
-        <i class="fas fa-shopping-cart"></i>
-      </a> 
 
-       Notifications -->
-      <!-- <div class="dropdown">
-        <a
-          class="text-reset me-3 dropdown-toggle hidden-arrow"
-          href="#"
-          id="navbarDropdownMenuLink"
-          role="button"
-          data-mdb-toggle="dropdown"
-          aria-expanded="false"
-        >
-          <i class="fas fa-bell"></i>
-          <span class="badge rounded-pill badge-notification bg-danger">1</span>
-        </a>
-        <ul
-          class="dropdown-menu dropdown-menu-end"
-          aria-labelledby="navbarDropdownMenuLink"
-        >
-          <li>
-            <a class="dropdown-item" href="#">Some news</a>
-          </li>
-          <li>
-            <a class="dropdown-item" href="#">Another news</a>
-          </li>
-          <li>
-            <a class="dropdown-item" href="#">Something else here</a>
-          </li>
-        </ul>
-      </div> -->
-      <!-- Avatar -->
+      <!-Avatar -->
       <div class="dropdown">
         <a
           class="dropdown-toggle d-flex align-items-center hidden-arrow"
@@ -180,7 +230,7 @@ $time = date(' h:i:s');
           </li>
           
           <li>
-            <a class="dropdown-item" href="logout.php">Logout</a>
+            <a class="dropdown-item" href="#">Logout</a>
           </li>
         </ul>
       </div>
@@ -193,11 +243,53 @@ $time = date(' h:i:s');
 <div class="weladm">
 <h2>Welcome <span class="badge bg-primary"><?php echo"Admin"?></span></h2>
 <p> Today's Date : <?php echo "$date"?> Time : <?php echo "$time"?></p>
+<div>
+<h5>Please fillup the input field of shop entry form</h3>
+<form method="POST" action="insert_shop.php">
+              
+                    <span class="name">
+                        <label for="name">Name</label>
+                        <input type="text" id="Name" name="Name" placeholder="Name"><br>
+                    </span>
+                    <span class="phone">
+						<label for="phone">Password</label>
+						<input type="password"id="phone" name="pass" placeholder="password"><br>
+					</span>
+                    
+                    <span class="phone">
+						<label for="phone">Location</label>
+						<input type="text"id="phone" name="location" placeholder="Location"><br>
+					</span>
+                    <span class="phone">
+						<label for="phone">Contact</label>
+						<input type="text"id="phone" name="s_contact" placeholder="Contact"><br>
+					</span>
+                    <span class="phone">
+						<label for="phone">Email</label>
+						<input type="email"id="phone" name="s_email" placeholder="Email"><br>
+					</span>
+                    <span class="phone">
+						<label for="phone">Service Area</label>
+						<input type="text"id="phone" name="s_area" placeholder="Service Area"><br>
+					</span>
+                    
+                    <div class="update">
+                    <!-- <button class="upd" name="u_update">Update</button> -->
+                    <button class="upd" name="u_Add">Add Shop</button>
+                    <!-- <button class="upd" name="u_delete">Delete</button> -->
+                   
+
+                    </div>
+					
+					
+				</form>
 
 
+</div>
 </div>
 
 
  </body>
  <script src="sidenav.js"></script>
+ <!-- <script src="request.js"></script> -->
  </html>

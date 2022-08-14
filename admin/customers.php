@@ -1,4 +1,9 @@
 <?php
+
+?>
+<?php
+?>
+<?php
 date_default_timezone_set('Asia/dhaka');
 $date = date('d-m-y');
 $time = date(' h:i:s');
@@ -22,6 +27,22 @@ $time = date(' h:i:s');
       margin-left: 220px;
       
     }
+    .btns{
+        font-size: 16px;
+        padding: 10px 20px;
+        border-radius: 12px;
+        transition-duration: 0.4s;
+        background-color: #005EB8;
+        color: white;
+        border: 2px solid #005EB8; 
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    }
+    .btns:hover {
+  background-color: #87CEEB;
+  border: 2px solid #005EB8; 
+  
+  
+}
   
     
     </style>
@@ -45,6 +66,17 @@ $time = date(' h:i:s');
 />
 
 <!-- MDB -->
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 <script
   type="text/javascript"
   src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.4.0/mdb.min.js"
@@ -194,10 +226,55 @@ $time = date(' h:i:s');
 <h2>Welcome <span class="badge bg-primary"><?php echo"Admin"?></span></h2>
 <p> Today's Date : <?php echo "$date"?> Time : <?php echo "$time"?></p>
 
+<!-- <button class="btns" id="getshopper">Load Shoppers</button> -->
+<div class="container">
+<h1>Customers List,</h1>
+<table class="table table-border">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>ID</th>
+      <th>Contact</th>
+      <th>Location</th>
+      <th>email</th>
+     
+    </tr>
+  </thead>
+  <tbody>
+    <?php
+    $conn = mysqli_connect('localhost','root','','dhuye_daw');
+    if($conn){
+      echo "Connection Successful.";
+    }
+    else{
+      echo"Connection error";
+    }
+    $sql = "SELECT * FROM `customer`";
+    $result = $conn->query($sql);
+
+   
+    if($result){
+      while($row = $result->fetch_assoc()){
+        echo "<tr><td>" .$row['c_name'] . "</td><td>" .$row['c_id'] . "</td><td>" .$row['c_contact'] . "</td><td>" .$row['loaction'] . "</td><td>" .$row['email'] . "</td><tr>";
+      }
+    }
+      ?>
+      <!-- <tr>
+        <td><?php echo $row['c_name'];?></td>
+        <td><?php echo $row['c_id'];?></td>
+        <td><?php echo $row['c_contact'];?></td>
+        <td><?php echo $row['c_loaction'];?></td>
+        <td><?php echo $row['c_email'];?></td>
+      </tr> -->
+  </tbody>
+</table>
+</div>
+
 
 </div>
 
 
  </body>
  <script src="sidenav.js"></script>
+ <!-- <script src="request.js"></script> -->
  </html>
